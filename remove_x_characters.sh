@@ -18,15 +18,17 @@ for file in "$path"/*; do
     if [[ -f "$file" ]]; then
         base="${file%.*}"
         ext="${file##*.}"
-        new_base="${base:0:-$X}" # removes the last X characters
-        if [[ "$base" != "$new_base" ]]; then
-            mv "$file" "$new_base.$ext"
-        else
-            mv "$file" "$new_base"
+        new_len=$(( ${#base} - X ))
+        if (( new_len < 0 )); then
+            echo "Skipping $file — base name too short"
+            continue
         fi
-        if [[ "$file" == *.* ]]; then
+        new_base="${base:0:new_len}" # removes the last X characters
+        if [[ "$ext" != "$file" ]]; then
+            mv "$file" "$new_base.$ext"
             echo "Renamed $file to $new_base.$ext"
         else
+            mv "$file" "$new_base"
             echo "Renamed $file to $new_base"
         fi
     fi
