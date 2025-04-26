@@ -1,10 +1,10 @@
 #!/bin/bash
 
 # Number of characters to remove
-X = "$17"
+X = "$1"
 
 # Directory to search in
-path = "~/Downloads/AWS\ SAA-03\ Courses"
+path = "."
 
 # Check if the number of characters is provided
 if [[  -z "$X" ]]; then
