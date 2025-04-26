@@ -9,6 +9,6 @@ This Script Removes an X amount of Characters (exluding the file tag) from the e
 
 ```./remove_x_characters.sh {number of characters} {path to directory}```
 
-***Example:**
+**Example:**
 
 ```./remove_x_characters.sh 17 ~/Example/Folder```
